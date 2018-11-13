@@ -15,15 +15,14 @@ public class fiboPerimeter {
     }
 
     public static BigInteger perimeter(BigInteger n) {
-        n = n.add(new BigInteger("1"));
+        n = n.add(BigInteger.ONE);
         BigInteger fibo0 = new BigInteger("0");
         BigInteger fibo1 = new BigInteger("1");
         BigInteger sumOfFibo = new BigInteger("1");
 
-        for (BigInteger i = new BigInteger("1"); i.compareTo(n) < 0; i = i.add(new BigInteger("1"))){
-            BigInteger temp = fibo0;
-            fibo0 = fibo1;
-            fibo1 = fibo0.add(temp);
+        for (BigInteger i = BigInteger.ONE; i.compareTo(n) < 0; i = i.add(BigInteger.ONE)){
+            fibo1 = fibo1.add(fibo0);
+            fibo0 = fibo1.subtract(fibo0);
             sumOfFibo = sumOfFibo.add(fibo1);
         }
         return sumOfFibo.multiply(new BigInteger("4"));
